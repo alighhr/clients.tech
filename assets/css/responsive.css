@@ -1,0 +1,45 @@
+@media screen and (max-width: 767px) {
+    .sidebar li a, .sidebar li a.collapsed.active  {
+        padding: 12px;
+    }
+    .res-pad  {
+        padding-top: 12em;
+    }
+    .box_shadow {
+        margin: 0px;
+    }
+    .checkout .box_shadow {
+		margin: 30px 0 0; 
+	}
+    
+}   
+@media screen and (max-width: 575px) {
+    .beauty .nav-pills {
+        width: 100%;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+}
+@media screen and (max-width: 480px) {
+	.res-pad  {
+        padding-top: 10em;
+    }
+    .bottom-bar h5 {
+		font-size: 16px;
+	}
+	.bottom-bar p, .bottom-bar h5 span {
+		font-size: 12px;
+	}
+    .beauty .nav-pills .nav-link {
+        width: 140px;
+    }
+}
+@media screen and (max-width: 375px) {
+    .beauty ul li {
+        margin: 0 10px;
+    }
+    .beauty ul li a {
+        font-size: 14px;
+    }
+}

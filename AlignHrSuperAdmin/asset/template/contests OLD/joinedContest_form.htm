@@ -1,0 +1,74 @@
+<div class="modal-body">
+	<div class="form-area">
+		<form id="update_form" name="update_form" autocomplete="off" >
+			<div class="row">
+				<div class="col-md-12" style="text-align: center; margin-bottom: 10px;">
+					<div class="form-group">
+						<center><h3>{{contestData.ContestName}}</h3></center>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Contest Size : {{contestData.ContestSize}}</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Entry Fee : {{contestData.EntryFee}}</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Winning Amount : {{contestData.WinningAmount}}</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Joined : {{contestData.TotalJoined}}</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label >Winning Breakout</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table" >
+						<thead>
+							<tr>
+								<th>Rank</th>
+								<th>Username</th>
+								<th>Points</th>
+								<th>Won</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr ng-repeat="teams in formData.Records" >
+								<td>{{teams.UserRank}}</td>
+								<td>{{teams.Username}}</td>
+								<td>{{teams.TotalPoints}}</td>
+								<td>{{teams.UserWinningAmount}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- hidden parameters -->
+			<input type="hidden" name="ContestGUID" value="{{formData.ContestGUID}}">
+			<!-- hidden parameters /-->
+		</form>
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+</div>
+
+

@@ -1,0 +1,55 @@
+<div class="modal-body">
+	<div class="form-area">
+
+		<form id="add_form" name="add_form" autocomplete="off" >
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label">Features</label>
+						<textarea name="Features" class="form-control"></textarea>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<!-- <div class="row" ng-if="data.dataList.length">
+				<div class="col-md-7">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Parent Category</label>
+						<select id="ParentCategoryGUID" name="ParentCategoryGUID" class="form-control chosen-select">
+							<option value="{{data.ParentCategoryGUID}}">&nbsp;</option>
+							<option ng-repeat="row in data.dataList" value="{{row.CategoryGUID}}">{{row.CategoryName}}</option>
+						</select>
+						<small>Select this option only if you want to add a subcategory.</small>
+					</div>
+				</div>
+			</div> -->
+
+
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label">Status</label>
+						<select name="Status" id="Status" class="form-control chosen-select">
+							<option value="Active" ng-selected="formData.Status=='Active'">Active</option>
+							<option value="Inactive" ng-selected="formData.Status=='Inactive'">Inactive</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		
+		</form>
+
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+	<button type="submit" class="btn btn-success btn-sm" ng-disabled="addDataLoading" ng-click="addData()">Save</button>
+</div>
+
+

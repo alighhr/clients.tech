@@ -1,0 +1,248 @@
+<div class="modal-body">
+	<div class="form-area">
+
+		<form id="add_form" name="add_form" autocomplete="off" >
+			
+			<div class="row">
+                            
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Game Type</label>
+						<select id="IsPaid" ng-model="GameType" name="GameType" class="form-control chosen-select" ng-change="getTime(GameType)">
+							<option value="">Please Select</option>
+							<option value="Advance">Advance Play</option>
+							<option value="Safe">Safe Play</option>
+							
+						</select>
+					</div>
+				</div>
+				
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Game Live Time </label>
+						<input name="GameTimeLive" id="GameTimeLive" ng-model="GameTimeLive" type="text" class="form-control" placeholder="0" value="" maxlength="40">
+						<small>Set Game time in minutes, game going to live before actual live time.</small>
+					</div>
+				</div>
+                            
+                            
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Contest Name</label>
+						<input name="ContestName" type="text" class="form-control" placeholder="Contest Name" value="" maxlength="40">
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Series</label>
+						<select id="Series" name="SeriesGUID" ng-model="SeriesGUID" class="form-control chosen-select" ng-change="getMatches(SeriesGUID)">
+							<option value="">Please Select</option>
+							<option ng-repeat="Series in filterData.SeiresData" value="{{Series.SeriesGUID}}">{{Series.SeriesName}}</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Match</label>
+						<select id="MatchGUID" name="MatchGUID" class="form-control chosen-select">
+							<option value="">Please Select</option>
+							<option ng-repeat="match in MatchData" value="{{match.MatchGUID}}">{{match.TeamNameLocal}} Vs {{match.TeamNameVisitor}} ON {{match.MatchStartDateTime}}</option>
+						</select>
+						<small>Select this option to select match according to selected series.</small>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Is Paid Contest?</label>
+						<select id="IsPaid" ng-model="IsPaid" name="IsPaid" class="form-control chosen-select">
+							<option value="">Please Select</option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+							
+						</select>
+						<small>Select this option notifiy that contest is free or paid.</small>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Winning Amount</label>
+						<input name="WinningAmount" ng-model="custom.WinningAmount" placeholder="Winning Amount" type="text" class="form-control numeric" value="0" ng-if="IsPaid=='Yes'">
+						<input name="WinningAmount" ng-model="custom.WinningAmount" ng-init="custom.WinningAmount='0'" placeholder="Winning Amount" type="text" class="form-control numeric" value="0" ng-if="IsPaid=='No'" >
+					</div>
+				</div>
+                <div class="col-md-3" ng-if="IsPaid=='Yes'">
+					<div class="form-group">
+						<label class="control-label">Admin Charges (%)</label>
+						<input name="AdminPercent" ng-model="custom.AdminPercent" placeholder="Admin Charges in Percentage"  ng-init="custom.AdminPercent='10'" type="text" class="form-control numeric" maxlength="3" ng-if="IsPaid=='Yes'">
+					</div>
+				</div>
+				<div class="col-md-3" ng-if="IsPaid=='Yes'">
+					<div class="form-group">
+						<label class="control-label">Cash Bonus Contribution (%)</label>
+						<input name="CashBonusContribution" ng-model="CashBonusContribution" placeholder="Cash Bonus Controbution in Percentage" type="text" class="form-control numeric" value="0" maxlength="3" ng-if="IsPaid=='Yes'">
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Contest Format</label>
+						<select id="ContestFormat" ng-model="ContestFormat" name="ContestFormat" class="form-control chosen-select">
+							<option value="">Please Select</option>
+							<option value="Head to Head">Head to Head</option>
+							<option value="League">League</option>
+						</select>
+						<small></small>
+					</div>
+				</div>
+
+				<div class="col-md-3" ng-if="IsPaid=='Yes'" >
+					<div class="form-group">
+						<label class="control-label">Entry Fee</label>
+						<input name="EntryFee" ng-model="EntryFee" type="text" placeholder="0" class="form-control numeric" value="" maxlength="40" ng-if="IsPaid=='Yes'" >
+						<input name="EntryFee" ng-model="EntryFee" type="text" ng-init="EntryFee='0'" placeholder="0" class="form-control numeric" value="0" maxlength="40" ng-if="IsPaid=='No'">
+					</div>
+				</div>
+			
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Entry Type</label>
+						<select id="EntryType" name="EntryType" ng-model="EntryType" class="form-control chosen-select">
+							<option value="">Please Select</option>
+							<option value="Single">Single</option>
+							<option value="Multiple">Multiple</option>
+						</select>
+						<small>Select option to notify if contest is single or multiple.</small>
+					</div>
+				</div>
+				<div class="col-md-3" ng-if="EntryType=='Multiple'" ng-init="UserJoinLimit=0">
+					<div class="form-group">
+						<label class="control-label">No. of users to join contest</label>
+						<input name="UserJoinLimit" ng-model="UserJoinLimit" placeholder="League Join Limit" type="text" class="form-control numeric" value="0" maxlength="5">
+					</div>
+				</div>
+				<div class="col-md-3" ng-if="ContestFormat!='Head to Head'">
+					<div class="form-group">
+						<label class="control-label">Contest Size</label>
+						<input name="ContestSize" ng-model="custom.ContestSize" type="text" class="form-control integer" value="2" >
+					</div>
+				</div>
+				<input ng-if="ContestFormat=='Head to Head'" type="hidden" name="ContestSize" value="2">
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Contest Type</label>
+						<select id="ContestType" name="ContestType" ng-model="ContestType" class="form-control chosen-select">
+							<option value="">Please Select</option>
+							<option value="Normal">Normal</option>
+							<option value="Reverse">Reverse</option>
+							<option value="InPlay">InPlay</option>
+							<option value="Hot">Hot</option>
+							<option value="Champion">Champion</option>
+							<option value="Practice">Practice</option>
+							<option value="More">More</option>
+							<option value="Mega">Mega</option>
+							<option value="Winners takes all">Winners takes all</option>
+						</select>
+						<small>Select option to notify contest type.</small>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Confirm Contest</label>
+						<select id="IsConfirm" name="IsConfirm" ng-model="IsConfirm" class="form-control chosen-select">
+							<option value="">Please Select</option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+						</select>
+						<small>Select option to notify contest is confirm contest or not.</small>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Show Joined Users</label>
+						<select id="ShowJoinedContest" name="ShowJoinedContest" ng-model="ShowJoinedContest" class="form-control chosen-select">
+							<option value="">Please Select</option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+						</select>
+						<small>Select option to notify joined user in contests.</small>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Customize Winnings</label>
+						<!-- <input type="checkbox" ng-model="custom.winnings" ng-click="customizeWin()" > -->
+					</div>
+				</div>
+			</div>
+			<div class="row" >
+				<div class="col-md-10">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="custom.NoOfWinners"  name="NoOfWinners" ng-change="changeWinners()" >
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<a href="javascript:void(0)" class="btn btn-secondary btn-sm" ng-click="Showform()" >Set</a>
+					</div>
+				</div>
+				<div class="col-sm-12">
+	                <div ng-show="showField" class="creatcontast_list">
+	                    <table style="width: 100%;">
+	                        <thead>
+	                            <tr>
+	                                <th>Rank</th>
+	                                <th>Winning %</th>
+	                                <th>Winning Amount</th>
+	                                <th><button class="btn btn-submit" type="button" ng-click="addField()" >+</button></th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <tr ng-repeat="r in custom.choices ">
+	                                <td>
+	                                    <table>
+	                                        <tr>
+	                                            <td>
+	                                            {{number}}
+
+	                                                <label>From</label><select class="form-control" ng-model="r.From" ng-options="number for number in r.numbers" disabled="true"></select>
+	                                            </td>
+	                                            <td>
+	                                                <label>To</label><select class="form-control"  ng-init="DataForm.To = r.numbers[0]" ng-change="changePercent($index)" ng-model="r.To" ng-options="number for number in r.numbers"></select>
+	                                            </td>
+	                                        </tr>
+	                                    </table>
+	                                  
+
+	                               </td>
+	                                <td>
+	                                    <label>Percent</label> <input type="text" ng-model="r.percent" name="percent" class="form-control" ng-change="changePercent($index)" valid-number>
+	                                </td>
+	                                <td><label>Amount</label> <input type="text" class="form-control" ng-model="r.amount"></td>
+	                                <td><button type="button" class="btn btn-submit" ng-click="removeField($index)">-</button></td>
+	                            </tr>
+	                           
+	                        </tbody>
+	                    </table>
+	                </div>
+	                <div style="color:red" ng-show="percent_error">*Percent field is required</div>
+	                <div style="color:red" ng-show="calculation_error">*{{calculation_error_msg}}</div>
+	            </div>
+			</div>
+
+		</form>
+
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+	<button type="submit" class="btn btn-success btn-sm" ng-disabled="addDataLoading" ng-click="addData()">Save</button>
+</div>
+
+

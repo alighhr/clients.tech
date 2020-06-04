@@ -1,0 +1,124 @@
+<div class="modal-body">
+	<div class="form-area">
+
+		<form id="edit_form" name="edit_form" autocomplete="off" >
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group mb-0">
+						<center><h4 class="mb-0">{{formData.SeriesName}}</h4></center>
+					</div>
+				</div>
+			</div>
+
+			<hr>
+			<div class="row"> 
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Series Name</label>
+						<input type="text" id="SeriesName" class="form-control" name="SeriesName" ng-model="formData.SeriesName" value="{{formData.SeriesName}}" readonly>
+						<a href="javascript:void(0)" onclick="EditSeriesName()"><i class="fa fa-edit"></i> Edit</a>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Status</label>
+						<select name="Status" id="Status" class="form-control chosen-select">
+						<option value="">Please Select</option>
+							<option value="Active" ng-selected="formData.Status=='Active'">Active</option>
+							<option value="Inactive" ng-selected="formData.Status=='Inactive'">Inactive</option>
+						</select>
+					</div>
+				</div>
+
+			</div>
+<!-- 			<div class="row"> 
+				<div class="col-md-7">
+					<div class="form-group">
+						<label class="control-label">Status</label>
+						<select name="Status" id="Status" class="form-control chosen-select">
+						<option value="">Please Select</option>
+							<option value="Active" ng-selected="formData.Status=='Active'">Active</option>
+							<option value="Inactive" ng-selected="formData.Status=='Inactive'">Inactive</option>
+						</select>
+					</div>
+				</div>
+			</div> -->
+<!--			<div class="row"> 
+				<div class="col-md-7">
+					<div class="form-group">
+						<label class="control-label">Auction Draft Play</label>
+						<select name="AuctionDraftIsPlayed" id="AuctionDraftIsPlayed" class="form-control chosen-select">
+						<option value="">Please Select</option>
+							<option value="Yes" ng-selected="formData.AuctionDraftIsPlayed=='Yes'">Yes</option>
+							<option value="No" ng-selected="formData.AuctionDraftIsPlayed=='No'">No</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row"> 
+				<div class="col-md-7">
+					<div class="form-group">
+						<label class="control-label">Draft User Limit </label>
+						<input name="DraftUserLimit" id="DraftUserLimit" ng-model="formData.DraftUserLimit" type="text" class="form-control numeric">
+					</div>
+				</div>
+			</div>
+			<div class="row"> 
+				<div class="col-md-7">
+					<div class="form-group">
+						<label class="control-label">Draft Team Player Limit</label>
+						<input name="DraftTeamPlayerLimit" id="DraftTeamPlayerLimit" ng-model="formData.DraftTeamPlayerLimit" type="text" class="form-control numeric">
+					</div>
+				</div>
+			</div>
+			<div class="row"> 
+				<div class="col-md-7">
+					<div class="form-group">
+						<label class="control-label">Draft Player Selection Criteria</label>
+					</div>
+				</div>
+			</div>
+			<div class="row"> 
+				<div class="col-md-2">
+					<div class="form-group">
+						<label class="control-label">WK</label>
+						<input name="DraftPlayerSelectionCriteria[]" type="text" class="form-control numeric">
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label class="control-label">BAT</label>
+						<input name="DraftPlayerSelectionCriteria[]" type="text" class="form-control numeric">
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label class="control-label">AR</label>
+						<input name="DraftPlayerSelectionCriteria[]" type="text" class="form-control numeric">
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label class="control-label">BOWL</label>
+						<input name="DraftPlayerSelectionCriteria[]" type="text" class="form-control numeric">
+					</div>
+				</div>
+			</div>-->
+			
+			<input type="hidden" name="SeriesGUID" value="{{formData.SeriesGUID}}">
+			<!-- hidden parameters /-->
+		</form>
+
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+	<button type="submit" class="btn btn-success btn-sm" ng-disabled="editDataLoading" ng-click="editData()">Save</button>
+</div>
+
+<script type="text/javascript">
+	function EditSeriesName() {
+		$('#SeriesName').removeAttr('readonly');
+	}
+</script>

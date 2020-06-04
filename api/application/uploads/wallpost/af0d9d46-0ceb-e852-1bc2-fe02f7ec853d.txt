@@ -1,0 +1,72 @@
+https://www.javatpoint.com/
+
+
+
+Programming
+-------------------------------
+*C# Tutorials
+*Anroid Tutorials
+
+
+Web Design
+-------------------------------
+*Bootstrap 4
+
+
+Client Side Scripting
+-------------------------------
+JQuery
+
+
+Server Side Scripting
+-------------------------------
+*Codeigniter
+*Go
+*JSP
+*Ruby
+
+Database
+-------------------------------
+*PostgreSQL
+*SQLite
+*MongoDB
+*Oracle 
+*Redis
+*Neo4j
+
+
+Data Interchange
+-------------------------------
+*Ajax
+*REST Web Services
+
+
+CS Subjects
+-------------------------------
+*Algorithms
+*Computer Networks
+*Compiler Design
+*Web Technlogy
+*Theory of Computation
+*Computer Organization and Architecture
+*Digital Electronics
+*Mathematics
+*Advanced Computer Subjects
+
+
+Miscellaneous Topics
+-------------------------------
+*Linux
+*Shell Scripting
+*GIT
+
+
+
+
+I can write tutorials on Game Engineering (sp. subj.), Game Dev using Unity3D (Masters' specialization.), Data Science using Python (NumPy), Virtual Reality with practical using Unity and HMSs (sp.), C# & advanced C#, Advanced Graphics using Open-GL, Computer Ethics and Policies, Advanced Java (Hibernate and JSP), C# for Game Development, Entrepreneurship as Subject , Networking, System Software, Compiler Design, Software Testing
+
+
+
+
+
+

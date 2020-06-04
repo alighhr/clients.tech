@@ -1,0 +1,48 @@
+<div class="modal-body">
+	<div class="form-area">
+		<form id="list_form" name="list_form" autocomplete="off" >
+			<div class="row">
+				<div class="col-md-7">
+					<table class="table">
+						<thead>
+							<th>Rank</th>
+							<th>Full Name</th>
+							<th>Team Name</th>
+							<th>Contest Size</th>
+							<th>Joined Contest</th>
+							<th>Fee</th>
+							<th>Points</th>
+							<th>Winning Amount</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="data in formData.Records">
+								<td>{{data.UserRank}}</td>
+
+								<td>{{data.FullName}}</td>
+							
+								<td>{{data.UserTeamName}}</td>
+								
+								<td>{{data.ContestSize}}</td>
+							
+								<td>{{data.ContestSize}}</td>
+							
+								<td>{{data.EntryFee}}</td>
+								
+								<td>{{data.TotalPoints}}</td>
+							
+								<td>{{data.UserWinningAmount}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+</div>
+
+

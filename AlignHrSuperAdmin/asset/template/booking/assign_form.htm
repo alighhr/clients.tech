@@ -1,0 +1,27 @@
+<div class="modal-body">
+    <div class="form-area">
+
+        <form id="assign_form" name="assign_form" autocomplete="off">
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="filter-col" for="ParentCategory">Employee</label>
+                        <select id="UserGUID" name="UserGUID" ng-model="formData.UserGUID" class="form-control chosen-select">
+                            <option value="">Please Select</option>
+                            <option ng-repeat="List in dataListUser" value="{{List.UserGUID}}">{{List.FullName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+    <button type="submit" class="btn btn-success btn-sm" ng-disabled="editDataLoading" ng-click="assignEmployee()">Save</button>
+</div>

@@ -1,0 +1,259 @@
+<div ng-controller="PageController" ng-init="loadFormEdit()">
+<div class="modal-body">
+	<div class="form-area">
+
+		<form id="edit_form" name="edit_form" autocomplete="off" >
+			
+			<div class="row">
+                            
+                                <div class="col-md-6">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Series</label>
+						<p class="text-primary">{{formData.SeriesName}}</p>
+					</div>
+				</div>
+                            
+                <div class="col-md-6">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">League Type</label>
+                        <p class="text-primary">{{formData.LeagueType}} Play</p>
+                        <!--<select id="IsPaid" ng-model="formData.LeagueType" name="LeagueType" class="form-control chosen-select">
+							<option value="">Please Select</option>
+							<option value="Draft" ng-selected="formData.LeagueType=='Draft' ? 'true' : 'false' ">Draft Play</option>
+							<option value="Auction" ng-selected="formData.LeagueType=='Auction' ? 'true' : 'false' ">Auction Play</option>
+						</select>-->
+					</div>
+				</div>
+
+                <div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">League Join Date Time </label>
+                                                <input name="LeagueJoinDateTime" id="LeagueJoinDateTime" readonly="" ng-model="formData.LeagueJoinDateTime" type="text" class="form-control" value="{{formData.LeagueJoinDateTime}}">
+						<small>Set league join date time on which time user can create a team.</small>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Contest Name</label>
+						<input name="ContestName" ng-model="formData.ContestName" type="text" class="form-control" placeholder="Contest Name" value="{{formData.ContestName}}"  maxlength="40">
+					</div>
+				</div>
+
+				
+
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Is Paid Contest?</label>
+						<select id="IsPaid" ng-model="formData.IsPaid" name="IsPaid" class="form-control chosen-select">
+							<option value="">Please Select</option>
+							<option value="Yes" ng-selected="formData.IsPaid=='Yes' ? 'true' : 'false' " >Yes</option>
+							<option value="No" ng-selected="formData.IsPaid=='No' ? 'true' : 'false' "  >No</option>
+							
+						</select>
+						<small>Select this option notifiy that contest is free or paid.</small>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Winning Amount</label>
+						<input name="WinningAmount" ng-model="custom.WinningAmount" placeholder="Winning Amount" type="text" class="form-control numeric" value="{{formData.WinningAmount}}" >
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Admin Charges (%)</label>
+						<input name="AdminPercent" ng-model="custom.AdminPercent" placeholder="Admin Charges in Percentage" type="text" class="form-control numeric" maxlength="3" value="{{formData.AdminPercent}}">
+					</div>
+				</div>
+				<div class="col-md-3" ng-if="formData.IsPaid=='Yes'" ng-init="CashBonusContribution=0" >
+					<div class="form-group">
+						<label class="control-label">Cash Bonus Contribution (%)</label>
+						<input name="CashBonusContribution" ng-model="formData.CashBonusContribution" placeholder="Cash Bonus Contribution in Percentage" type="text" class="form-control numeric" value="0" maxlength="3" ng-if="formData.IsPaid=='Yes'">
+					</div>
+				</div>
+
+				<div class="col-md-3" ng-if="formData.IsPaid=='Yes'" >
+					<div class="form-group">
+						<label class="control-label">Entry Fee</label>
+						<input name="EntryFee" ng-model="EntryFee" type="text" placeholder="0" class="form-control numeric" value="{{EntryFee}}" maxlength="40" ng-if="formData.IsPaid=='Yes'" >
+						<input name="EntryFee" ng-model="EntryFee" type="text" placeholder="0" ng-init="EntryFee='0'" class="form-control numeric" value="{{EntryFee}}" maxlength="40" ng-if="formData.IsPaid=='No'" >
+					</div>
+				</div>
+			
+				<div class="col-md-3" ng-if="formData.EntryType=='Multiple'">
+					<div class="form-group">
+						<label class="control-label">No. of users to join contest</label>
+						<input name="UserJoinLimit" ng-model="formData.UserJoinLimit" placeholder="League Join Limit" type="text" class="form-control numeric" value="0" maxlength="5">
+					</div>
+				</div>
+
+				<div class="col-md-3" ng-if="formData.ContestFormat!='Head to Head'">
+					<div class="form-group">
+						<label class="control-label">Contest Size</label>
+						<input name="ContestSize" ng-model="custom.ContestSize" type="text" class="form-control integer"  >
+					</div>
+				</div>
+				
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="filter-col" for="ParentCategory">Confirm Contest</label>
+						<select id="IsConfirm" name="IsConfirm" ng-model="formData.IsConfirm" class="form-control chosen-select">
+							<option value="">Please Select</option>
+							<option value="Yes" ng-selected='formData.IsConfirm=="Normal" ? "true" : "false" ' >Yes</option>
+							<option value="No" ng-selected='formData.IsConfirm=="Normal" ? "true" : "false" ' >No</option>
+						</select>
+						<small>Select yes for multiple and no for single.</small>
+					</div>
+				</div>
+				<div class="col-md-3" ng-if="formData.LeagueType == 'Snake Draft'">
+                    <div class="form-group">
+                        <label class="control-label">Draft Team Player Limit</label>
+                        <input name="DraftTeamPlayerLimit" id="DraftTeamPlayerLimit" ng-model="formData.DraftTeamPlayerLimit" type="text" class="form-control numeric">
+                    </div>
+                </div>
+
+                <div class="col-md-12" ng-if="formData.LeagueType == 'Snake Draft'">
+                    <div class="form-group">
+                        <label class="control-label">Draft Player Selection Criteria</label>
+                    </div>
+                </div>
+                <div class="col-md-2" ng-if="formData.LeagueType == 'Snake Draft'">
+                    <div class="form-group">
+                        <label class="control-label">WK</label>
+                        <input name="DraftPlayerSelectionCriteria[]" ng-model="formData.DraftPlayerSelectionCriteria.Wk" type="text" class="form-control numeric">
+                    </div>
+                </div>
+                <div class="col-md-2" ng-if="formData.LeagueType == 'Snake Draft'">
+                    <div class="form-group">
+                        <label class="control-label">BAT</label>
+                        <input name="DraftPlayerSelectionCriteria[]" ng-model="formData.DraftPlayerSelectionCriteria.Bat" type="text" class="form-control numeric">
+                    </div>
+                </div>
+                <div class="col-md-2" ng-if="formData.LeagueType == 'Snake Draft'">
+                    <div class="form-group">
+                        <label class="control-label">AR</label>
+                        <input name="DraftPlayerSelectionCriteria[]" ng-model="formData.DraftPlayerSelectionCriteria.Ar" type="text" class="form-control numeric">
+                    </div>
+                </div>
+                <div class="col-md-2" ng-if="formData.LeagueType == 'Snake Draft'">
+                    <div class="form-group">
+                        <label class="control-label">BOWL</label>
+                        <input name="DraftPlayerSelectionCriteria[]" ng-model="formData.DraftPlayerSelectionCriteria.Bowl" type="text" class="form-control numeric">
+                    </div>
+                </div>
+				
+				
+				<input type="hidden" name="ContestGUID" value="{{formData.ContestGUID}}">
+				<input type="hidden" ng-model="formData.ShowJoinedContest" name="ShowJoinedContest" value="Yes">
+				<input type="hidden" ng-model="formData.MinimumUserJoined" name="MinimumUserJoined" value="1">
+				<input type="hidden" ng-model="formData.ContestFormat" name="ContestFormat" value="Head to Head">
+				<input type="hidden" ng-model="formData.EntryType" name="EntryType" value="Single">
+				<input type="hidden" ng-model="formData.ContestType" name="ContestType" value="Normal">
+
+				<div class="col-md-3">
+                    <div class="form-group">
+                        <label class="filter-col" for="ParentCategory">Contest Format</label>
+                        <select id="ContestFormat" ng-model="formData.ContestFormat" name="ContestFormat" class="form-control chosen-select">
+                            <option value="">Please Select</option>
+                            <!--<option value="Head to Head" ng-selected="formData.ContestFormat == 'Head to Head' ? 'active' : ''">Head to Head</option>-->
+                            <option value="League" ng-selected="formData.ContestFormat == 'League' ? 'active' : ''">League</option>
+                        </select>
+                        <small></small>
+                    </div>
+                </div>
+
+                <div class="col-md-3" ng-if="formData.ContestFormat != 'Head to Head'">
+                    <div class="form-group">
+                        <label class="filter-col" for="ParentCategory">Contest Type</label>
+                        <select id="ContestType" name="ContestType" ng-model="formData.ContestType" class="form-control chosen-select">
+                            <option value="Hot" ng-selected='formData.ContestType == "Hot" ? "true" : "false"' >Hot</option>
+                            <option value="Champion" ng-selected='formData.ContestType == "Champion" ? "true" : "false"' >Champion</option>
+                            <option value="Practice" ng-selected='formData.ContestType == "Practice" ? "true" : "false"' >Practice</option>
+                            <option value="More" ng-selected='formData.ContestType == "More" ? "true" : "false"' >More</option>
+                            <option value="Mega" ng-selected='formData.ContestType == "Mega" ? "true" : "false"' >Mega</option>
+                            <option value="Smart Pool" ng-selected='formData.ContestType == "Smart Pool" ? "true" : "false"' >Smart Pool</option>
+                            <option value="Infinity Pool" ng-selected='formData.ContestType == "Infinity Pool" ? "true" : "false"' >Infinity Pool</option>
+                            <option value="Winner Takes All" ng-selected='formData.ContestType == "Winner Takes All" ? "true" : "false"' >Winner Takes All</option>
+                            <option value="Only For Beginners" ng-selected='formData.ContestType == "Only For Beginners" ? "true" : "false"' >Only For Beginners</option>
+                        </select>
+                        <small>Select yes for multiple and no for single.</small>
+                    </div>
+                </div>
+
+
+				<div style="color:red" ng-show="winningamount_error">*Please enter winning amount first.</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group" ng-if="formData.IsPaid=='Yes'" >
+						<label class="filter-col" for="ParentCategory">Customize Winnings</label>
+						<!-- <input type="checkbox" ng-model="custom.winnings" ng-click="customizeWin()" > -->
+					</div>
+				</div>
+			</div>
+			<div class="row" >
+				<div class="col-md-10">
+					<div class="form-group">
+						<input type="text" class="form-control" name="NoOfWinners" ng-model="custom.NoOfWinners" ng-change="changeWinners()" >
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<a href="javascript:void(0)" class="btn btn-secondary btn-sm" ng-click="Showform()" >Set</a>
+					</div>
+				</div>
+				<div class="col-sm-12">
+	                <div class="creatcontast_list">
+	                    <table style="width: 100%; ">
+	                        <thead>
+	                            <tr>
+	                                <th>Rank</th>
+	                                <th>Winning %</th>
+	                                <th>Winning Amount</th>
+	                                <th><button class="btn btn-submit" type="button" ng-click="addField()" >+</button></th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <tr ng-repeat="r in custom.choices ">
+	                                <td>
+	                                    <table>
+	                                        <tr>
+	                                            <td>
+	                                                <label>From</label><select class="form-control" ng-model="r.From" ng-options="number for number in r.numbers" ng-selected="" disabled="true"></select>
+	                                            </td>
+	                                            <td>
+	                                                <label>To</label><select class="form-control"  ng-init="DataForm.To = r.numbers[0]" ng-change="changePercent($index)" ng-model="r.To" ng-options="number for number in r.numbers"></select>
+	                                            </td>
+	                                        </tr>
+	                                    </table>
+	                                  
+
+	                               </td>
+	                                <td>
+	                                    <label>Percent</label> <input type="text" ng-model="r.percent" name="percent" class="form-control" ng-change="changePercent($index)" valid-number>
+	                                </td>
+	                                <td><label>Amount</label> <input type="text" class="form-control" ng-model="r.amount"></td>
+	                                <td><button type="button" class="btn btn-submit" ng-click="removeField($index)">-</button></td>
+	                            </tr>
+	                           
+	                        </tbody>
+	                    </table>
+	                </div>
+	                <div style="color:red" ng-show="percent_error">*Percent field is required</div>
+	                <div style="color:red" ng-show="calculation_error">*{{calculation_error_msg}}</div>
+
+	            </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+	<button type="submit" class="btn btn-success btn-sm" ng-disabled="addDataLoading" ng-click="editData()">Save</button>
+</div>
+</div>

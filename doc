@@ -1,0 +1,1 @@
+INSERT INTO `tbl_entity_type` (`EntityTypeID`, `EntityTypeName`) VALUES (NULL, 'Booking');

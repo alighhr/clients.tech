@@ -1,0 +1,40 @@
+<div class="modal-body">
+	<div class="form-area">
+
+		<form id="edit_form" name="edit_form" autocomplete="off" >
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label">Features</label>
+						<textarea name="Features"  class="form-control" value="{{formData.Features}}"  >{{formData.Features}}</textarea>
+					</div>
+				</div>
+			</div>		
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label">Status</label>
+						<select name="Status" id="Status" class="form-control chosen-select">
+							<option value="Active" ng-selected="formData.Status=='Active'">Active</option>
+							<option value="Inactive" ng-selected="formData.Status=='Inactive'">Inactive</option>
+						</select>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- hidden parameters -->
+			<input type="hidden" name="FeatureGUID" value="{{formData.FeatureGUID}}">   
+			<!-- hidden parameters /-->
+		</form>
+
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+	<button type="submit" class="btn btn-success btn-sm" ng-disabled="editDataLoading" ng-click="editData()">Save</button>
+</div>
+
+
