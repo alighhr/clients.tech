@@ -114,6 +114,6 @@ switch (ENVIRONMENT) {
     case 'production':
         $db['default']['hostname'] = 'localhost';
         $db['default']['username'] = 'root';
-        $db['default']['password'] = 'fvGw*K7$pv!dN5@MSz$c?ptf9X9_rhd';
+        $db['default']['password'] = 'd8k@qxa_HbY!Y6A$tgv%pFSN#BHSL';
         break;
 }

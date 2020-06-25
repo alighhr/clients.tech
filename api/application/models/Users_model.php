@@ -343,6 +343,7 @@ class Users_model extends CI_Model {
             "SubscriptionType" => @$Input['SubscriptionType'],
             "StartDate" => @$Input['StartDate'],
             "EndDate" => @$Input['EndDate'],
+            "ClientCode" => @strtoupper($Input['ClientCode'])
         ));
         $this->db->insert('tbl_users', $InsertData);
 
@@ -483,6 +484,7 @@ class Users_model extends CI_Model {
                 'SubscriptionType' => 'U.SubscriptionType',
                 'StartDate' => 'U.StartDate',
                 'EndDate' => 'U.EndDate',
+                'ClientCode' => 'U.ClientCode',
             );
             foreach ($Params as $Param) {
                 $Field .= (!empty($FieldArray[$Param]) ? ',' . $FieldArray[$Param] : '');
@@ -575,6 +577,9 @@ class Users_model extends CI_Model {
         }
         if (!empty($Where['Email'])) {
             $this->db->where("U.Email", $Where['Email']);
+        }
+        if (!empty($Where['ClientCode'])) {
+            $this->db->where("U.ClientCode", $Where['ClientCode']);
         }
         if (!empty($Where['PhoneNumber'])) {
             $this->db->where("U.PhoneNumber", $Where['PhoneNumber']);

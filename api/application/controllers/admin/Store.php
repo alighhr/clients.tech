@@ -7,6 +7,7 @@ class Store extends API_Controller
 	{
 		parent::__construct();
 		$this->load->model('Store_model');
+		$this->load->model('Users_model');
 	}
 
 	/*
@@ -91,4 +92,29 @@ class Store extends API_Controller
 			$this->Return['Message']  	=	"Something went wrong";
 		}
 	}
+
+	 public function getDomainName_post()
+    {
+    	// $this->form_validation->set_rules('CouponCode', 'CouponCode', 'trim|required');
+    	// $this->form_validation->validation($this);
+      
+        $ClientCode = $this->input->post('ClientCode');
+
+         $ExistCode = $this->Users_model->getUsers('ClientCode,Domain', array("ClientCode" => strtoupper($ClientCode)));
+         if(!empty($ExistCode))
+         {
+            $this->Return['ResponseCode'] = 200;
+            $this->Return['Message'] = "Get Successfully!";
+            $this->Return['Data'] = $ExistCode['Domain'];
+
+            return "{'Domain':".$this->Return."}";
+        }else{
+            $this->Return['ResponseCode'] = 500;
+            $this->Return['Message'] = "Get Unsuccessfully!";
+            $this->Return['Data'] = "";
+
+            return "{'Domain':".$this->Return."}";
+        }
+
+    }
 }

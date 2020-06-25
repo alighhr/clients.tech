@@ -18,7 +18,7 @@
 
       <div class="form-group">
         <button type="submit" name="submit_button" class="btn btn-success btn-sm" ng-disabled="processing" ng-click="signIn()">Sign in</button>
-        <span class="float-right"><a href="recovery" class="a">Forgot password?</a></span>
+        <!-- <span class="float-right"><a href="recovery" class="a">Forgot password?</a></span> -->
       </div>
     </form>
   </div>

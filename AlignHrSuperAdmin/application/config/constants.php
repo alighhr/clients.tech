@@ -101,28 +101,24 @@ switch (ENVIRONMENT) {
 		define('SITE_HOST', 'http://localhost');
 		define('ROOT_FOLDER', '/alignhr-clients/AlignHrSuperAdmin');
 		define('API_URL', "http://localhost/alignhr-clients/api/");
-		define('API_URL_FOOTBALL', SITE_HOST . "/alignhr-clients/api/football/");
 		break;
 	case 'testing':
 		/*Paths*/
 		define('SITE_HOST', 'http://192.168.1.211');
 		define('ROOT_FOLDER', '/servechampci/ServeChampSuperAdmin');
 		define('API_URL', SITE_HOST . "/servechampci/api/");
-		define('API_URL_FOOTBALL', SITE_HOST . "/servechampci/api/football/");
 		break;
 	case 'demo':
 		/*Paths*/
 		define('SITE_HOST', 'http://54.169.70.225');
 		define('ROOT_FOLDER', '/alignhr-clients/AlignHrSuperAdmin');
 		define('API_URL', SITE_HOST . "/alignhr-clients/api/");
-		define('API_URL_FOOTBALL', SITE_HOST . "/alignhr-clients/api/football/");
 		break;
 	case 'production':
 		/*Paths*/
-		define('SITE_HOST', 'http://servechamp.com');
-		define('ROOT_FOLDER', '/ServeChampSuperAdmin');
-		define('API_URL', SITE_HOST . "/api/");
-		define('API_URL_FOOTBALL', SITE_HOST . "/api/football/");
+		define('SITE_HOST', 'http://engageme.tech');
+		define('ROOT_FOLDER', '/alignhr-clients/AlignHrSuperAdmin');
+		define('API_URL', SITE_HOST . "/alignhr-clients/api/");
 		break;
 }
 define('BASE_URL', SITE_HOST . ROOT_FOLDER . '/');

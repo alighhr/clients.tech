@@ -47,6 +47,7 @@
                             <!-- <th style="width: 50px;" class="text-center" ng-if="data.dataList.length>1"><input type="checkbox" name="select-all" id="select-all" class="mt-1" ></th> -->	
                         <th>Client</th>
                         <th>Contact No.</th>
+                        <th>Client Code</th>
                          <th>Business Name</th>
                         <th>Domain</th> 
                         <th>Payment Mode</th>
@@ -71,6 +72,7 @@
                         </td> 
 
                         <td>{{row.PhoneNumber == "" ? row.PhoneNumberForChange : row.PhoneNumber }}</td> 
+                        <td>{{row.ClientCode}}</td>
 
                         <td>{{row.BusinessName}}</td> 
                         <td>{{row.Domain}}</td> 

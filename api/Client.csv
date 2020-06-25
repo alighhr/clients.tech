@@ -1,4 +1,2 @@
-Email,"Phone Number",Client,Address,"Business Name",Domain,"Payment Mode","Subscription Type","Start Date","End Date","Registered On"
-preeti.mobiwebtech@gmail.com,9753589610,Preeti,"indore ",mobiwebtech,mobiwebtech.com,Test,Gold,2020-04-03,2020-04-06,"2020-04-03 07:50:24"
-sorav.mobiwebtech123@gmail.com,9074939905,Sorav,"Indore ",mobiwebtech,mobiwebtech.com,cash,Gold,2020-04-10,2020-04-09,"2020-04-03 04:42:07"
-tyest@gmail.com,9852415285,Test1,"indore ",test1,test,test,Gold,2020-04-07,2020-04-22,"2020-04-02 12:11:50"
+Email,"Phone Number",Client,ClientCode,Address,"Business Name",Domain,"Payment Mode","Subscription Type","Start Date","End Date","Registered On"
+priya.mobiwebtech@gmail.com,9825418523,Priya,ABCD1234,"indore ",software,https://www.google.com/,paytm,Gold,2020-06-19,2020-06-24,"2020-06-19 04:25:39"

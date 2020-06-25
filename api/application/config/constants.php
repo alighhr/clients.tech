@@ -311,8 +311,8 @@ switch (ENVIRONMENT) {
         break;
     case 'production':
         /* Paths */
-        define('SITE_HOST', 'http://fantasybaseproject.com/');
-        define('ROOT_FOLDER', '');
+        define('SITE_HOST', 'http://engageme.tech/');
+        define('ROOT_FOLDER', 'alignhr-clients/');
 
         /* SMTP Settings */
         define('SMTP_PROTOCOL', 'smtp');
@@ -335,31 +335,14 @@ switch (ENVIRONMENT) {
         define('CRON_SAVE_LOG', false);
 
         /* Paytm Details */
-        define('PAYTM_MERCHANT_ID', '*******************');
-        define('PAYTM_MERCHANT_KEY', '****************');
-        define('PAYTM_DOMAIN', 'securegw.paytm.in');
+        define('PAYTM_MERCHANT_ID', '********************');
+        define('PAYTM_MERCHANT_KEY', '********************');
+        define('PAYTM_DOMAIN', 'securegw-stage.paytm.in');
         define('PAYTM_INDUSTRY_TYPE_ID', 'Retail');
-        define('PAYTM_WEBSITE_WEB', 'DEFAULT');
-        define('PAYTM_WEBSITE_APP', 'DEFAULT');
+        define('PAYTM_WEBSITE_WEB', 'WEBSTAGING');
+        define('PAYTM_WEBSITE_APP', 'APPSTAGING');
         define('PAYTM_TXN_URL', 'https://' . PAYTM_DOMAIN . '/theia/processTransaction');
         define('PAYUMONEY_ACTION_KEY', 'https://secure.payu.in/_payment');
-
-        /* PAYTM AUTOWITHDRAW */
-        define('AUTO_WITHDRAWAL', true);
-        define('PAYTM_MERCHANT_KEY_WITHDRAWAL', '******************');
-        define('PAYTM_MERCHANT_mId', '******************');
-        define('PAYTM_MERCHANT_GUID', '********************************');
-        define('PAYTM_SALES_WALLET_GUID', '********************************');
-        define('PAYTM_GRATIFICATION_URL', 'https://trust.paytm.in/wallet-web/salesToUserCredit'); // For Withdraw
-
-        define('APP_PAYTM_MERCHANT_ID', '***********');
-        define('APP_PAYTM_MERCHANT_KEY', '***********');
-        define('APP_PAYTM_DOMAIN', 'securegw.paytm.in');
-        define('APP_PAYTM_INDUSTRY_TYPE_ID', 'Retail');
-        define('APP_PAYTM_WEBSITE_WEB', 'DEFAULT');
-        define('APP_PAYTM_WEBSITE_APP', 'DEFAULT');
-        define('APP_PAYTM_TXN_URL', 'https://' . APP_PAYTM_DOMAIN . '/theia/processTransaction');
-
 
         /* Razorpay Details */
         define('RAZORPAY_KEY_ID', '*************************');

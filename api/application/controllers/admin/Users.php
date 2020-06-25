@@ -224,6 +224,7 @@ class Users extends API_Controller_Secure {
         $this->form_validation->set_rules('Email', 'Email', 'trim|required|valid_email|callback_validateEmail');
         //$this->form_validation->set_rules('Password', 'Password', 'trim' . (empty($this->Post['Source']) || $this->Post['Source'] == 'Direct' ? '|required' : ''));
         $this->form_validation->set_rules('BusinessName', 'BusinessName', 'trim|required');
+        $this->form_validation->set_rules('ClientCode', 'Client Code', 'trim|required|callback_validateClientCode|min_length[8]|max_length[8]');
         $this->form_validation->set_rules('Domain', 'Domain', 'trim|required|callback_validateDomain');
         $this->form_validation->set_rules('PaymentMode', 'Payment Mode', 'trim|required');
         $this->form_validation->set_rules('SubscriptionType', 'Subscription Type', 'trim|required');
@@ -239,6 +240,15 @@ class Users extends API_Controller_Secure {
         $this->form_validation->validation($this);  /* Run validation */
         /* Validation - ends */
 
+        $ExistCode = $this->Users_model->getUsers('ClientCode', array("ClientCode" => strtoupper($this->Post['ClientCode'])));
+
+        if(!empty($ExistCode['ClientCode']))
+        {
+             $this->Return['ResponseCode'] = 500;
+             $this->Return['Message'] = "Client Code is already exist!";
+             exit;
+        }
+
         $UserID = $this->Users_model->addUser($this->Post, $this->Post['UserTypeID'], $this->SourceID, @$this->StatusID);
         if (!$UserID) {
             $this->Return['ResponseCode'] = 500;
@@ -251,14 +261,14 @@ class Users extends API_Controller_Secure {
             // 	'emailMessage'	=> emailTemplate($this->load->view('emailer/adduser',array("Name" =>  $this->Post['FirstName'], 'Password' => $this->Post['Password']),TRUE)) 
             // ));
 
-            // send_mail(array(
-            //     'emailTo' => $this->Post['Email'],
-            //     'template_id' => ADD_USER,
-            //     'Subject' => 'Your Login Credentials -' . SITE_NAME,
-            //     "Name" => $this->Post['FirstName'],
-            //     'Password' => $this->Post['Password'],
-            //     'EmailText' => $this->Post['Email']
-            // ));
+            send_mail(array(
+                'emailTo' => $this->Post['Email'],
+                'template_id' => ADD_USER,
+                'Subject' => 'Your Login Credentials -' . SITE_NAME,
+                "Name" => $this->Post['FirstName'],
+                'Password' => $this->Post['Password'],
+                'EmailText' => $this->Post['Email']
+            ));
             return true;
         }
     }
@@ -373,6 +383,7 @@ class Users extends API_Controller_Secure {
                         'Email'     => (empty($value['Email']) ? $value['EmailForChange'] : $value['Email']),
                         'PhoneNumber' => (empty($value['PhoneNumber']) ? $value['PhoneNumberForChange'] : $value['PhoneNumber']),
                         'Client' => $value['FirstName'],
+                        'ClientCode' => $value['ClientCode'],
                         'Address'   => $value['Address'].' '. $value['Address1'],
                         'Business Name'      => $value['BusinessName'],
                         'Domain' => $value['Domain'],
@@ -388,7 +399,7 @@ class Users extends API_Controller_Secure {
 
             header('Content-type: application/csv');
             header('Content-Disposition: attachment; filename=Client.csv');
-            fputcsv($fp, array('Email','Phone Number', 'Client','Address', 'Business Name', 'Domain', 'Payment Mode', 'Subscription Type','Start Date','End Date','Registered On'));
+            fputcsv($fp, array('Email','Phone Number', 'Client','ClientCode','Address', 'Business Name', 'Domain', 'Payment Mode', 'Subscription Type','Start Date','End Date','Registered On'));
 
             foreach ($print_array as $row) {
                 fputcsv($fp, $row);
@@ -623,6 +634,17 @@ class Users extends API_Controller_Secure {
         }
         return TRUE;
     }
+    function validateClientCode()
+    {
+        if (preg_match('/^[a-zA-Z]+[a-zA-Z0-9._]+$/', $this->Post['ClientCode'])) {
+          return TRUE;
+        } else {
+           $this->form_validation->set_message('validateClientCode', 'Client Code should be alphanumeric.');
+            return FALSE;
+        }
+        return TRUE;
+    }
+   
 
     /* ---------------End----------- */
 }

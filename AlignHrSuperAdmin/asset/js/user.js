@@ -37,7 +37,7 @@ app.controller('PageController', function ($scope, $http, $timeout) {
         if ($scope.data.listLoading || $scope.data.noRecords)
             return;
         $scope.data.listLoading = true;
-        var data = 'SessionKey=' + SessionKey + '&ListType=' + ListType + '&UserTypeID=2&IsAdmin=No&UserTypeID=2&PageNo=' + $scope.data.pageNo + '&PageSize=' + $scope.data.pageSize + '&OrderBy=' + $scope.data.OrderBy + '&Sequence=' + $scope.data.Sequence + '&' + 'Params=RegisteredOn,EmailForChange,EmailStatus,PhoneNumberForChange,PhoneStatus,LastLoginDate,UserTypeName, FullName, Email, Username, ProfilePic, Gender, BirthDate, PhoneNumber, Status, ReferredCount,StatusID,BusinessName,Domain,PaymentMode,SubscriptionType,StartDate,EndDate&' + $('#filterForm1').serialize() + '&' + $('#filterForm').serialize();
+        var data = 'SessionKey=' + SessionKey + '&ListType=' + ListType + '&UserTypeID=2&IsAdmin=No&UserTypeID=2&PageNo=' + $scope.data.pageNo + '&PageSize=' + $scope.data.pageSize + '&OrderBy=' + $scope.data.OrderBy + '&Sequence=' + $scope.data.Sequence + '&' + 'Params=RegisteredOn,EmailForChange,EmailStatus,PhoneNumberForChange,PhoneStatus,LastLoginDate,UserTypeName, FullName, Email, Username, ProfilePic, Gender, BirthDate, PhoneNumber, Status, ReferredCount,StatusID,BusinessName,Domain,PaymentMode,SubscriptionType,StartDate,EndDate,ClientCode&' + $('#filterForm1').serialize() + '&' + $('#filterForm').serialize();
 
         $http.post(API_URL + 'admin/users', data, contentType).then(function (response) {
             var response = response.data;
@@ -74,7 +74,7 @@ app.controller('PageController', function ($scope, $http, $timeout) {
         } else {
             var UserType = '';
         }
-        var data = 'SessionKey=' + SessionKey + '&UserType=' + UserType + '&IsAdmin=No&Params=Email,EmailForChange,FirstName,LastName,Address,Address1,CityName,StateName,CountryName,Postal,PhoneNumber,RegisteredOn,PhoneNumberForChange,BusinessName,Domain,PaymentMode,SubscriptionType,StartDate,EndDate&' + $('#filterForm1').serialize() + '&' + $('#filterForm').serialize();
+        var data = 'SessionKey=' + SessionKey + '&UserType=' + UserType + '&IsAdmin=No&Params=Email,EmailForChange,FirstName,LastName,Address,Address1,CityName,StateName,CountryName,Postal,PhoneNumber,RegisteredOn,PhoneNumberForChange,BusinessName,Domain,PaymentMode,SubscriptionType,StartDate,EndDate,ClientCode&' + $('#filterForm1').serialize() + '&' + $('#filterForm').serialize();
         $http.post(API_URL + 'admin/users/export_Users_list_csv', data, contentType).then(function (response) {
             var response = response.data;
             if (response.ResponseCode == 200) { /* success case */

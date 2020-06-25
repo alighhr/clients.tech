@@ -75,11 +75,11 @@ if (php_sapi_name() == 'cli') {
 		case '192.168.1.251':
 		$_SERVER['CI_ENV'] = 'testing'; // For our internal testing purpose
 		break;
-		case '54.169.70.225':
-		$_SERVER['CI_ENV'] = 'demo'; // For client demo purpose
+		case 'engageme.tech':
+		$_SERVER['CI_ENV'] = 'production'; // For client demo purpose
 		break;  
 		default :
-		$_SERVER['CI_ENV'] = 'production'; // For live
+		$_SERVER['CI_ENV'] = 'demo'; // For live
 		break;
 	}
 }
