@@ -311,7 +311,7 @@ switch (ENVIRONMENT) {
         break;
     case 'production':
         /* Paths */
-        define('SITE_HOST', 'http://engageme.tech/');
+        define('SITE_HOST', 'http://www.engageme.tech/');
         define('ROOT_FOLDER', 'alignhr-clients/');
 
         /* SMTP Settings */
